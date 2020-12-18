@@ -12,7 +12,7 @@ export function EditorDemo() {
   let instance = null;
   const tools = [
     { label: '移动画布', handler: () => { instance.setMode(AnnotationEditorMode.DragWorkspace) } },
-    { label: 'Alt 缩放画布', handler: () => { instance.setMode(AnnotationEditorMode.ScaleWorkspace) } },
+    { label: '缩放画布', handler: () => { instance.setMode(AnnotationEditorMode.ScaleWorkspace) } },
     { label: '矩形', handler: () => { instance.setMode(AnnotationEditorMode.DrawRect) } },
     { label: '多边形', handler: () => { instance.setMode(AnnotationEditorMode.DrawPolyline) } },
     { label: '移动图形', handler: () => { instance.setMode(AnnotationEditorMode.EditObject) } },

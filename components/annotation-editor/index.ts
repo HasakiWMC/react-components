@@ -263,12 +263,13 @@ export default class AnnotationEditor {
       }
       case AnnotationEditorMode.ScaleWorkspace: {
         const mousewheel = (e: any) => {
-          if (e.event.altKey) {
-            const [scaleX, scaleY] = this.workspace.scale;
-            const [offsetX, offsetY] = this.workspace.transformCoordToLocal(e.offsetX, e.offsetY);
+          const [scaleX, scaleY] = this.workspace.scale;
+          const [x, y] = this.workspace.position;
+          const k = 1 + e.wheelDelta / 10;
+          if (scaleX * k > 0.1 && scaleX * k < 2) {
             this.workspace.attr({
-              origin: [offsetX, offsetY],
-              scale: [scaleX + 0.1 * e.wheelDelta, scaleY + 0.1 * e.wheelDelta]
+                position: [e.offsetX - (e.offsetX - x) * k, e.offsetY - (e.offsetY - y) * k],
+                scale: [scaleX * k, scaleY * k]
             });
           }
         };
